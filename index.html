@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CECyTE Horarios</title>
+
+<style>
+
+/* FONDO GENERAL */
+body{
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #ff7a00, #1f8a3a);
+  color:white;
+  text-align:center;
+}
+
+/* CONTENEDOR */
+.container{
+  margin-top:50px;
+}
+
+/* LOGO */
+.logo{
+    display:block;
+    width:200px;
+    max-width:250px;
+    margin:20px auto 10px auto;
+    padding:10px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0px 4px 15px rgba(0,0,0,0.2);
+}
+/* TITULO */
+h1{
+  font-size:38px;
+  margin-bottom:5px;
+}
+
+/* INPUT */
+input{
+  padding:15px;
+  font-size:18px;
+  border-radius:10px;
+  border:none;
+  width:250px;
+}
+
+/* BOTONES */
+button{
+  padding:15px 30px;
+  margin:10px;
+  font-size:18px;
+  border:none;
+  border-radius:10px;
+  background:#444;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#222;
+  transform:scale(1.05);
+}
+
+/* TARJETA */
+.card{
+  background:#f4f4f4;
+  color:black;
+  width:85%;
+  max-width:800px;
+  margin:30px auto;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0px 0px 20px black;
+}
+
+/* IMAGENES */
+img{
+  width:90%;
+  max-width:700px;
+  margin-top:20px;
+  border-radius:10px;
+}
+
+/* SOLO ocultamos horario y mapa */
+#horario, #mapa{
+  display:none;
+}
+
+/* LOGO siempre visible */
+.logo{
+  display:block;
+  width:120px;
+  margin-bottom:10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<!-- LOGO -->
+<img src="logo_cecyte.png" class="logo">
+
+<h1>CECyTE Tlaxcala</h1>
+<p>Sistema de consulta de horarios</p>
+
+<input type="text" id="grupo" placeholder="Ej: 6G">
+
+<br>
+
+<button onclick="buscar()">Consultar horario</button>
+<button onclick="verMapa()">Ver mapa</button>
+
+</div>
+
+<div class="card">
+
+<img id="horario">
+<img id="mapa" src="mapa_cecyte.png">
+
+</div>
+
+<script>
+
+// BUSCAR HORARIO
+function buscar(){
+
+let grupo = document.getElementById("grupo").value;
+grupo = grupo.replace(/\s/g,"").toUpperCase();
+
+// ocultar mapa
+document.getElementById("mapa").style.display = "none";
+
+if(grupo == "6G"){
+  document.getElementById("horario").src = "horario_6g.png";
+  document.getElementById("horario").style.display = "block";
+}else{
+  alert("Grupo no encontrado");
+}
+
+}
+
+// VER MAPA
+function verMapa(){
+
+document.getElementById("horario").style.display = "none";
+
+let mapa = document.getElementById("mapa");
+
+if(mapa.style.display === "none"){
+  mapa.style.display = "block";
+}else{
+  mapa.style.display = "none";
+}
+
+}
+
+</script>
+
+</body>
+</html>
